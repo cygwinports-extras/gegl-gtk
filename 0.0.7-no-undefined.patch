@@ -1,0 +1,22 @@
+--- origsrc/gegl-gtk-0.0.7/gegl-gtk/Makefile.am	2011-11-20 09:21:26.000000000 -0600
++++ src/gegl-gtk-0.0.7/gegl-gtk/Makefile.am	2011-12-13 22:12:07.593352600 -0600
+@@ -21,7 +21,7 @@ lib_LTLIBRARIES = libgegl-gtk@GEGL_GTK_G
+ libgegl_gtk@GEGL_GTK_GTK_VERSION@_0_1_la_SOURCES = $(headers)  $(gen_headers) $(sources) $(internal_headers) $(internal_sources)
+ libgegl_gtk@GEGL_GTK_GTK_VERSION@_0_1_la_LIBADD = $(GTK_LIBS) $(GEGL_LIBS) $(CAIRO_GOBJECT_LIBS)
+ libgegl_gtk@GEGL_GTK_GTK_VERSION@_0_1_la_CFLAGS = $(INCLUDES) $(CFLAGS)
+-libgegl_gtk@GEGL_GTK_GTK_VERSION@_0_1_la_LDFLAGS = $(gegl_gtk_LDFLAGS) -version-info $(GEGL_GTK_LIBRARY_VERSION)
++libgegl_gtk@GEGL_GTK_GTK_VERSION@_0_1_la_LDFLAGS = $(gegl_gtk_LDFLAGS) -version-info $(GEGL_GTK_LIBRARY_VERSION) -no-undefined
+ 
+ gegl-gtk-enums.c: $(srcdir)/gegl-gtk-enums.h
+ 	glib-mkenums \
+--- origsrc/gegl-gtk-0.0.7/operations/Makefile.am	2011-09-20 18:34:08.000000000 -0500
++++ src/gegl-gtk-0.0.7/operations/Makefile.am	2011-12-13 22:14:35.937837400 -0600
+@@ -4,7 +4,7 @@ libgeglgtk = $(top_builddir)/gegl-gtk/li
+ 
+ op_LIBS            = $(GTK_LIBS) $(GEGL_LIBS) $(libgeglgtk)
+ op_CFLAGS			= $(GTK_CFLAGS) $(GEGL_CFLAGS)
+-op_LDFLAGS			= -avoid-version -export-dynamic -module
++op_LDFLAGS			= -avoid-version -export-dynamic -module -no-undefined
+ 
+ CFILES          = $(wildcard $(srcdir)/*.c)
+ plugins         = $(subst gegl-gtk-,gegl-gtk@GEGL_GTK_GTK_VERSION@-, $(subst $(srcdir)/,,$(CFILES:.c=.la)))

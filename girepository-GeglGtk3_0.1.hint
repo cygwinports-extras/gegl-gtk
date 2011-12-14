@@ -1,0 +1,8 @@
+category: Graphics Gnome
+requires: libgegl-gtk3_0.1_0 girepository-Babl0.1 girepository-Gegl0.1 girepository-Gtk3.0
+external-source: gegl-gtk
+sdesc: "GEGL GTK+3 GUI library (GObject Introspection)"
+ldesc: "The purpose of gegl-gtk is to make it easy for application 
+developers to use GEGL in applications with GTK+ based user interfaces. 
+gegl-gtk aims to support both GTK+2 and GTK+3 from within C, Vala, and
+other languages via GObject Introspection."

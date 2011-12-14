@@ -1,0 +1,8 @@
+category: Graphics Gnome
+requires: libbabl0.1_0 libcairo2 libgegl0.1_0 libglib2.0_0 libgtk3_0
+external-source: gegl-gtk
+sdesc: "GEGL GTK+3 GUI library (runtime)"
+ldesc: "The purpose of gegl-gtk is to make it easy for application 
+developers to use GEGL in applications with GTK+ based user interfaces. 
+gegl-gtk aims to support both GTK+2 and GTK+3 from within C, Vala, and
+other languages via GObject Introspection."

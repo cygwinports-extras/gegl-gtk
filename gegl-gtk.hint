@@ -1,0 +1,6 @@
+category: Graphics Gnome
+sdesc: "GEGL GTK+ GUI libraries (sources)"
+ldesc: "The purpose of gegl-gtk is to make it easy for application 
+developers to use GEGL in applications with GTK+ based user interfaces. 
+gegl-gtk aims to support both GTK+2 and GTK+3 from within C, Vala, and
+other languages via GObject Introspection."

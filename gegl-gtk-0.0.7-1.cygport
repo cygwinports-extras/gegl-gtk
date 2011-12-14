@@ -1,0 +1,42 @@
+DESCRIPTION="Generic Graphics Library GTK+ interface"
+HOMEPAGE="http://www.gegl.org/"
+SRC_URI="ftp://ftp.gimp.org/pub/${PN}/${PV_MAJ_MIN}/${P}.tar.bz2"
+PATCH_URI="0.0.7-no-undefined.patch"
+
+PKG_NAMES="${PN} libgegl-gtk2_0.1_0 libgegl-gtk2_0.1-devel
+           libgegl-gtk3_0.1_0 libgegl-gtk3_0.1-devel
+           girepository-GeglGtk2_0.1 girepository-GeglGtk3_0.1
+           vala-gegl-gtk2_0.1 vala-gegl-gtk3_0.1"
+gegl_gtk_CONTENTS="usr/share/doc/"
+libgegl_gtk2_0_1_0_CONTENTS="usr/bin/cyggegl-gtk2-0.1-0.dll usr/lib/gegl-0.1/gegl-gtk2-display.*"
+libgegl_gtk2_0_1_devel_CONTENTS="usr/include/gegl-gtk2-0.1/ usr/lib/libgegl-gtk2-0.1.*
+                                 usr/lib/pkgconfig/gegl-gtk2-0.1.pc"
+libgegl_gtk3_0_1_0_CONTENTS="usr/bin/cyggegl-gtk3-0.1-0.dll usr/lib/gegl-0.1/gegl-gtk3-display.*"
+libgegl_gtk3_0_1_devel_CONTENTS="usr/include/gegl-gtk3-0.1/ usr/lib/libgegl-gtk3-0.1.*
+                                 usr/lib/pkgconfig/gegl-gtk3-0.1.pc"
+girepository_GeglGtk2_0_1_CONTENTS="usr/*/gir*/GeglGtk2-0.1.*"
+girepository_GeglGtk3_0_1_CONTENTS="usr/*/gir*/GeglGtk3-0.1.*"
+vala_gegl_gtk2_0_1_CONTENTS="usr/share/vala/vapi/gegl-gtk2-0.1.*"
+vala_gegl_gtk3_0_1_CONTENTS="usr/share/vala/vapi/gegl-gtk3-0.1.*"
+
+src_compile() {
+	cd ${S}
+	cygautoreconf
+
+	mkdir -p ${B}/gtk2
+	cd ${B}/gtk2
+	cygconf --with-gtk=2.0
+	cygmake
+
+	mkdir -p ${B}/gtk3
+	cd ${B}/gtk3
+	cygconf --with-gtk=3.0
+	cygmake
+}
+
+src_install() {
+	cd ${B}/gtk3
+	cyginstall
+	cd ${B}/gtk2
+	cyginstall
+}
